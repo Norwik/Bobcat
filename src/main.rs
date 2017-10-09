@@ -4,15 +4,25 @@
 
 use std::error::Error;
 
+use std::{thread, time};
 use tokio::io::{AsyncReadExt, AsyncWriteExt};
 use tokio::net::TcpListener;
+use tokio::task;
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn Error>> {
-    let addr = "127.0.0.1:8080";
+    let addr = "127.0.0.1:1025";
     let listener = TcpListener::bind(addr).await?;
 
     println!("Listening on address: {}", addr);
+
+    // Launch Background Worker
+    task::spawn(async {
+        loop {
+            println!("{:?}", "Hello");
+            thread::sleep(time::Duration::from_millis(1000));
+        }
+    });
 
     loop {
         let (mut socket, _) = listener.accept().await?;
@@ -36,7 +46,12 @@ async fn main() -> Result<(), Box<dyn Error>> {
                 let _s = match std::str::from_utf8(command) {
                     Ok(v) => {
                         out = String::from(v);
+
+                        if out == "Bye" {
+                            break;
+                        }
                     }
+
                     Err(e) => panic!("Invalid UTF-8 sequence: {}", e),
                 };
 
