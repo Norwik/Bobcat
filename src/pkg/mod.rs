@@ -4,3 +4,4 @@
 
 pub mod environ;
 pub mod util;
+pub mod worker;

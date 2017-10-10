@@ -6,10 +6,8 @@ mod pkg;
 
 use std::error::Error;
 
-use std::{thread, time};
 use tokio::io::{AsyncReadExt, AsyncWriteExt};
 use tokio::net::TcpListener;
-use tokio::task;
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn Error>> {
@@ -18,13 +16,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
 
     println!("Listening on address: {}", addr);
 
-    // Launch Background Worker
-    task::spawn(async {
-        loop {
-            println!("{:?}", "Hello");
-            thread::sleep(time::Duration::from_millis(1000));
-        }
-    });
+    pkg::worker::worker();
 
     loop {
         let (mut socket, _) = listener.accept().await?;
