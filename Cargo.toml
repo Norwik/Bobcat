@@ -1,11 +1,11 @@
 [package]
-name = "elk-rs"
+name = "bobcat"
 version = "0.1.0"
 authors = ["Clivern <hello@clivern.com>"]
 edition = "2018"
 description = "A Public SMTP Server to forward Messages into A Backend System"
 license = "MIT"
-repository = "https://github.com/Norwik/Elk"
+repository = "https://github.com/Norwik/Bobcat"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
