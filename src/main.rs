@@ -36,27 +36,27 @@ async fn main() -> Result<(), Box<dyn Error>> {
                 let n = socket
                     .read(&mut buf)
                     .await
-                    .expect("failed to read data from socket");
+                    .expect("failed to read data from a socket");
 
                 if n == 0 {
                     return;
                 }
 
-                let command = &buf[0..n];
-                let out;
+                let request = &buf[0..n];
+                let response;
 
-                let _s = match std::str::from_utf8(command) {
+                let _s = match std::str::from_utf8(request) {
                     Ok(v) => {
-                        out = String::from(v);
+                        response = String::from(v);
                     }
 
                     Err(e) => panic!("Invalid UTF-8 sequence: {}", e),
                 };
 
                 socket
-                    .write_all(&out.as_str().as_bytes())
+                    .write_all(&response.as_str().as_bytes())
                     .await
-                    .expect("failed to write data to socket");
+                    .expect("failed to write data to the socket");
             }
         });
     }
