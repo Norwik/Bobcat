@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="/static/logo.png" width="150" />
+    <img src="/static/logo.png" width="180" />
     <h3 align="center">Elk</h3>
     <p align="center">A Public SMTP Server to forward Messages into A Backend System.</p>
     <p align="center">
