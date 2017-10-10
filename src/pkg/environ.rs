@@ -11,6 +11,6 @@ pub fn get_config(key: &str, def: &str) -> String {
 
 #[test]
 fn test_get_config() {
-    assert_eq!(get_config("CARGO_PKG_NAME", ""), "elk");
+    assert_eq!(get_config("CARGO_PKG_NAME", ""), "bobcat");
     assert_eq!(get_config("CARGO__PKG_NAME", "default"), "default");
 }
