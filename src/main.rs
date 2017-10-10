@@ -46,10 +46,6 @@ async fn main() -> Result<(), Box<dyn Error>> {
                 let _s = match std::str::from_utf8(command) {
                     Ok(v) => {
                         out = String::from(v);
-
-                        if out == "Bye" {
-                            break;
-                        }
                     }
 
                     Err(e) => panic!("Invalid UTF-8 sequence: {}", e),
