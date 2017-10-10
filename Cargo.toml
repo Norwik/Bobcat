@@ -1,11 +1,11 @@
 [package]
-name = "langmore"
-version = "0.3.0"
+name = "elk-rs"
+version = "0.1.0"
 authors = ["Clivern <hello@clivern.com>"]
 edition = "2018"
-description = "A KV Store Based On Write-Ahead Log"
+description = "A Public SMTP Server to forward Messages into A Backend System"
 license = "MIT"
-repository = "https://github.com/Clivern/Langmore"
+repository = "https://github.com/Norwik/Elk"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
